@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0F93E86-FFBB-42EB-87D6-F5759271F05C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AIGames.Warlight2.UnitTests</RootNamespace>
+    <AssemblyName>AIGames.Warlight2.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cartography\MapStateTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cartography\MapTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cartography\RegionCollectionTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cartography\RegionStateTest.cs" />
+    <Compile Include="Debugging\DebugRegionTest.cs" />
+    <Compile Include="Game\CombatTest.cs" />
+    <Compile Include="Game\MoveCollectionTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Game\PlayerTypeTest.cs" />
+    <Compile Include="Game\MoveTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestData\TestStream.cs" />
+    <Compile Include="Troschuetz.Random\SeedTest.cs" />
+    <Compile Include="UnitTestAssert.cs" />
+    <Compile Include="UnitTestMap.cs" />
+    <Compile Include="_Deployment\DeployTets.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config.develop" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="TestData\SetupMap.01.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIGames.BotDeployment\AIGames.BotDeployment.csproj">
+      <Project>{7f515ffe-d7a2-4dfc-97b0-fa6ec778e0fd}</Project>
+      <Name>AIGames.BotDeployment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIGames.Warlight2\AIGames.Warlight2.csproj">
+      <Project>{8a32ce1f-356d-4187-983c-5a94058db7c8}</Project>
+      <Name>AIGames.Warlight2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="Core.Dir" value="*\AIGames.*\src\AIGames.*"/>
+		<add key="Bots.Dir" value="*\AIGames.*\bots"/>
+	</appSettings>
+</configuration>

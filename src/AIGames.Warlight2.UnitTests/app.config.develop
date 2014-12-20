@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="Core.Dir" value="*\AIGames.Warlight2\src\AIGames.Warlight2"/>
+		<add key="Bots.Dir" value="*\AIGames.Warlight2\bots"/>
+		<add key="App.Dir" value="*\AIGames.Warlight2\src"/>
+	</appSettings>
+</configuration>
