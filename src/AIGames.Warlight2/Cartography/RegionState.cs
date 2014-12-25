@@ -22,6 +22,22 @@ namespace AIGames.Warlight2.Cartography
 		/// <summary>Get the owner of the region.</summary>
 		public PlayerType Owner { get { return (PlayerType)(m_Value & 3); } }
 
+		internal RegionState Leave(int armies)
+		{
+#if DEBUG
+			if (armies <= 0 || armies >= Armies) { throw new ArgumentOutOfRangeException("armies", "Amount of armies should be positive and smaller then the total amout of armies of the region."); }
+#endif
+			return Create(Armies - armies, Owner);
+		}
+
+		internal RegionState Arive(int armies)
+		{
+#if DEBUG
+			if (armies <= 0 || armies + Armies >= MaxArmies) { throw new ArgumentOutOfRangeException("armies", "Amount of armies should be positive and smaller then the maximum amout of armies."); }
+#endif
+			return Create(Armies + armies, Owner);
+		}
+
 		#region Serializable
 
 		/// <summary>Serialization constructor.</summary>
@@ -36,6 +52,8 @@ namespace AIGames.Warlight2.Cartography
 		}
 		#endregion
 
+		#region Equals
+
 		/// <summary>Gets the hash code.</summary>
 		public override int GetHashCode() { return m_Value; }
 
@@ -48,7 +66,6 @@ namespace AIGames.Warlight2.Cartography
 						  return Equals((RegionState)obj);
 #endif
 		}
-
 		/// <summary>Returns true if other region state equals this one, otherwise false.</summary>
 		public bool Equals(RegionState other) { return m_Value.Equals(other.m_Value); }
 
@@ -57,8 +74,10 @@ namespace AIGames.Warlight2.Cartography
 		/// <summary>Returns true if left and right are not equal, otherwise false.</summary>
 		public static bool operator !=(RegionState l, RegionState r) { return !(l == r); }
 
+		#endregion
+
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		private string DebuggerDisplay
+		internal string DebuggerDisplay
 		{
 			get
 			{
@@ -89,8 +108,8 @@ namespace AIGames.Warlight2.Cartography
 		internal static RegionState Create(int armies, int owner)
 		{
 #if DEBUG
-			if (armies < 0 || armies > MaxArmies) { throw new ArgumentOutOfRangeException("Amount of armies should be in the range [0, 16383]."); }
-			if (owner < 0 || owner > 2) { throw new ArgumentOutOfRangeException("Owner should  be in the range [0, 2]."); }
+			if (armies < 0 || armies > MaxArmies) { throw new ArgumentOutOfRangeException("armies", "Amount of armies should be in the range [0, 16383]."); }
+			if (owner < 0 || owner > 2) { throw new ArgumentOutOfRangeException("owner", "Owner should  be in the range [0, 2]."); }
 #endif
 			return new RegionState() { m_Value = (ushort)(owner | armies << 2) };
 		}

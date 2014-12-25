@@ -61,6 +61,7 @@
     <Compile Include="Game\PlayerTypeTest.cs" />
     <Compile Include="Game\MoveTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulation\SimulatorTest.cs" />
     <Compile Include="TestData\TestStream.cs" />
     <Compile Include="Troschuetz.Random\SeedTest.cs" />
     <Compile Include="UnitTestAssert.cs" />

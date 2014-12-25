@@ -96,10 +96,10 @@ namespace AIGames.Warlight2.Cartography
 		/// <summary>Gets the sub round.</summary>
 		public SubRoundType SubRound { get { return (SubRoundType)((m_Data >> PositionSubRound) & MaskSubRound); } }
 		/// <summary>Gets the player to move.</summary>
-		public PlayerType PlayerToMove { get { return PlayerType.neutral; } }
+		public PlayerType PlayerToMove { get { return (PlayerType)(1 + ((m_Data >> PositionPlayerToMove) & MaskPlayerToMove)); } }
 		/// <summary>Gets the depth of the state.</summary>
 		/// <remarks>
-		/// Combines round, subround and player to move.
+		/// Combines round, sub round and player to move.
 		/// </remarks>
 		public uint Depth { get { return m_Data >> PositionDepth; } }
 
@@ -254,7 +254,7 @@ namespace AIGames.Warlight2.Cartography
 				// create the change.
 				var change = oldRegion.GetHashCode() ^ newRegion.GetHashCode();
 
-				// roulate the change.
+				// roulades the change.
 				change = change << swch | change >> (PositionDepth - swch);
 
 				// apply the change.
@@ -289,7 +289,7 @@ namespace AIGames.Warlight2.Cartography
 
 			m_Data |= (uint)(round << PositionRound);
 			m_Data |= (uint)((int)subround << PositionSubRound);
-			if (playerToMove == (((round & 1) == 1) ? PlayerType.player2 : PlayerType.player1))
+			if (playerToMove == PlayerType.player2)
 			{
 				m_Data |= Bits.Mask01 << PositionPlayerToMove;
 			}

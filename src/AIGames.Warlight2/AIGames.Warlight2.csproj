@@ -79,6 +79,9 @@
     <Compile Include="Instructions\UpdateMapInstruction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cartography\RegionState.cs" />
+    <Compile Include="Simulation\SimulationDistribution.cs" />
+    <Compile Include="Simulation\SimulationOutcome.cs" />
+    <Compile Include="Simulation\Simulator.cs" />
     <Compile Include="Troschuetz.Random\MT19937Generator.cs" />
     <Compile Include="Troschuetz.Random\Seed.cs" />
   </ItemGroup>

@@ -1,5 +1,7 @@
 ﻿using AIGames.Warlight2.Cartography;
+#if DEBUG
 using AIGames.Warlight2.Debugging;
+#endif
 using AIGames.Warlight2.Game;
 using NUnit.Framework;
 using System;
